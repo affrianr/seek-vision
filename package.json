@@ -13,6 +13,7 @@
     "dev": "tsc --watch",
     "start": "node dist/cli.js",
     "prepare": "npm run build",
+    "prepublishOnly": "npm run build && npm audit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -28,7 +29,7 @@
   "author": "Tuan",
   "license": "MIT",
   "dependencies": {
-    "@google/genai": "^1.0.0",
+    "@google/genai": "^2.15.0",
     "commander": "^12.0.0"
   },
   "devDependencies": {
@@ -44,6 +45,9 @@
     "README.md",
     "LICENSE"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "os": [
     "darwin",
     "linux"
