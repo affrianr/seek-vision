@@ -1,13 +1,13 @@
 {
-  "name": "@anthropic-ai/vision-context",
+  "name": "@anthropic-ai/seek-vision",
   "version": "1.0.0",
   "description": "Vision bridge for text-only models - extract structured image context using Gemini API or Antigravity CLI",
-  "main": "src/vision_context.py",
+  "main": "src/seek_vision.py",
   "bin": {
-    "vision-context": "src/vision_context.py"
+    "seek-vision": "src/seek_vision.py"
   },
   "scripts": {
-    "start": "python src/vision_context.py",
+    "start": "python src/seek_vision.py",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

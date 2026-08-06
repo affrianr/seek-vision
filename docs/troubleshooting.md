@@ -4,17 +4,17 @@ Common issues and their solutions.
 
 ## Installation Issues
 
-### `command not found: vision-context`
+### `command not found: seek-vision`
 
 **Cause:** Vision Context is not installed or not in PATH.
 
 **Solution:**
 ```bash
 # Install globally
-npm install -g @anthropic-ai/vision-context
+npm install -g @anthropic-ai/seek-vision
 
 # Or run directly with npx
-npx @anthropic-ai/vision-context -i image.png
+npx @anthropic-ai/seek-vision -i image.png
 ```
 
 ### `Error: Cannot find module 'google-genai'`
@@ -37,7 +37,7 @@ pip install google-genai
 **Solution:**
 ```bash
 # Get free key from https://aistudio.google.com/apikey
-vision-context config set gemini-api.apiKey <your-api-key>
+seek-vision config set gemini-api.apiKey <your-api-key>
 
 # Or set environment variable
 export GEMINI_API_KEY="your-api-key"
@@ -103,7 +103,7 @@ cat ~/.ssh/id_ed25519.pub
 ls -la /path/to/image.png
 
 # Use absolute path
-vision-context -i /full/path/to/image.png
+seek-vision -i /full/path/to/image.png
 ```
 
 ### `Unsupported image format`
@@ -119,7 +119,7 @@ vision-context -i /full/path/to/image.png
 **Solution:**
 ```bash
 # Increase timeout to 5 minutes
-vision-context -i image.png --timeout 300000
+seek-vision -i image.png --timeout 300000
 ```
 
 ## Output Issues
@@ -141,5 +141,5 @@ vision-context -i image.png --timeout 300000
 If you're still having issues:
 
 1. Check the [GitHub Issues](https://github.com/affrianr/seek-vision/issues)
-2. Run `vision-context --check` to verify provider status
-3. Run `vision-context config show` to see configuration
+2. Run `seek-vision --check` to verify provider status
+3. Run `seek-vision config show` to see configuration

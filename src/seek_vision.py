@@ -20,7 +20,7 @@ PROVIDERS = {
         "name": "Gemini API",
         "requires_key": True,
         "key_env": "GEMINI_API_KEY",
-        "key_file": "~/.vision-context/gemini_api_key.txt",
+        "key_file": "~/.seek-vision/gemini_api_key.txt",
         "description": "Free tier from Google AI Studio"
     },
     "antigravity-cli": {
@@ -38,7 +38,7 @@ def load_api_key():
     if api_key:
         return api_key
     
-    config_path = Path.home() / ".vision-context" / "gemini_api_key.txt"
+    config_path = Path.home() / ".seek-vision" / "gemini_api_key.txt"
     if config_path.exists():
         return config_path.read_text().strip()
     
@@ -57,7 +57,7 @@ def check_provider(provider: str) -> dict:
         if not api_key:
             return {
                 "available": False,
-                "error": "No API key found. Set GEMINI_API_KEY env var or run: vision-context config set gemini-api.apiKey <key>"
+                "error": "No API key found. Set GEMINI_API_KEY env var or run: seek-vision config set gemini-api.apiKey <key>"
             }
         return {"available": True, "provider": provider, "has_key": True}
     
@@ -252,11 +252,11 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  vision-context -i screenshot.png
-  vision-context -i chart.jpg --prompt "focus on axes"
-  vision-context -i receipt.png -p gemini-api
-  vision-context --check
-  vision-context config show
+  seek-vision -i screenshot.png
+  seek-vision -i chart.jpg --prompt "focus on axes"
+  seek-vision -i receipt.png -p gemini-api
+  seek-vision --check
+  seek-vision config show
         """
     )
     
@@ -280,7 +280,7 @@ Examples:
     
     if args.config == "config":
         if len(args.config_args) == 0:
-            print(json.dumps({"error": "Usage: vision-context config show|set|init"}, indent=2))
+            print(json.dumps({"error": "Usage: seek-vision config show|set|init"}, indent=2))
             sys.exit(1)
         
         subcmd = args.config_args[0]
@@ -293,14 +293,14 @@ Examples:
         
         elif subcmd == "set":
             if len(args.config_args) < 3:
-                print(json.dumps({"error": "Usage: vision-context config set <provider>.<key> <value>"}, indent=2))
+                print(json.dumps({"error": "Usage: seek-vision config set <provider>.<key> <value>"}, indent=2))
                 sys.exit(1)
             
             target = args.config_args[1]
             value = args.config_args[2]
             
             if target == "gemini-api.apiKey":
-                config_dir = Path.home() / ".vision-context"
+                config_dir = Path.home() / ".seek-vision"
                 config_dir.mkdir(exist_ok=True)
                 key_file = config_dir / "gemini_api_key.txt"
                 key_file.write_text(value)
@@ -310,7 +310,7 @@ Examples:
                 print(json.dumps({"error": f"Unknown config target: {target}"}, indent=2))
         
         elif subcmd == "init":
-            config_dir = Path.home() / ".vision-context"
+            config_dir = Path.home() / ".seek-vision"
             config_dir.mkdir(exist_ok=True)
             print(json.dumps({"success": True, "message": f"Config directory created at {config_dir}"}, indent=2))
         

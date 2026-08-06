@@ -5,17 +5,17 @@
 
 <p align="center">
   <a href="./README.zh-CN.md">简体中文</a> · 
-  <a href="skills/vision-context/references/configure.md">Configuration</a> · 
-  <a href="skills/vision-context/references/output-schema.md">Output Schema</a>
+  <a href="skills/seek-vision/references/configure.md">Configuration</a> · 
+  <a href="skills/seek-vision/references/output-schema.md">Output Schema</a>
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@anthropic-ai/vision-context"><img src="https://img.shields.io/npm/v/@anthropic-ai/vision-context?style=flat-square&label=npm&color=cb3837" alt="npm"></a>
+  <a href="https://www.npmjs.com/package/@anthropic-ai/seek-vision"><img src="https://img.shields.io/npm/v/@anthropic-ai/seek-vision?style=flat-square&label=npm&color=cb3837" alt="npm"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License"></a>
 </p>
 
 ```bash
-npx -y @anthropic-ai/vision-context -i screenshot.png
+npx -y @anthropic-ai/seek-vision -i screenshot.png
 ```
 
 Models like DeepSeek-V4-Flash are cheap, fast, capable, and blind. Throw one a screenshot of an error and it sees nothing. Vision Context hands the image to a real vision engine and brings back evidence your model can quote: every word transcribed, the layout mapped, the doubts declared.
@@ -31,7 +31,7 @@ Models like DeepSeek-V4-Flash are cheap, fast, capable, and blind. Throw one a s
 ## Installation
 
 ```bash
-npx -y @anthropic-ai/vision-context
+npx -y @anthropic-ai/seek-vision
 ```
 
 Or tell your agent: "Install the skill from https://github.com/affrianr/seek-vision".
@@ -39,7 +39,7 @@ Or tell your agent: "Install the skill from https://github.com/affrianr/seek-vis
 Then give it a vision engine. A free **[AI Studio](https://aistudio.google.com) Gemini key** is the fast answer (three minutes, no credit card, 5-10 seconds per image):
 
 ```bash
-vision-context config set gemini-api.apiKey <key>
+seek-vision config set gemini-api.apiKey <key>
 ```
 
 Skipping the sign-up is fine: **Antigravity CLI** works with no key, it is just slower (15-40 seconds) with a tight free quota:
@@ -55,9 +55,9 @@ Requires Node 18+ (22.13+ for paste recovery), macOS or Linux.
 With the skill installed you do not type commands: paste an image or drop a path, ask anything, and it fires on its own. By hand:
 
 ```bash
-vision-context -i screenshot.png                       # local image
-vision-context -i https://example.com/chart.png        # remote image
-vision-context -i chart.png --prompt "focus on axes"   # extra focus
+seek-vision -i screenshot.png                       # local image
+seek-vision -i https://example.com/chart.png        # remote image
+seek-vision -i chart.png --prompt "focus on axes"   # extra focus
 ```
 
 Output is a fixed JSON shape:

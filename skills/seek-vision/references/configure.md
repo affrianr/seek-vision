@@ -18,13 +18,13 @@ Vision Context supports two vision providers. Here's how to configure each:
 export GEMINI_API_KEY="your-api-key-here"
 
 # Option 2: Config file (recommended)
-npx @anthropic-ai/vision-context config set gemini-api.apiKey <your-api-key>
+npx @anthropic-ai/seek-vision config set gemini-api.apiKey <your-api-key>
 ```
 
 ### Verify
 
 ```bash
-npx @anthropic-ai/vision-context config show
+npx @anthropic-ai/seek-vision config show
 ```
 
 Should show `gemini-api: { available: true, has_key: true }`
@@ -48,7 +48,7 @@ agy
 ### Verify
 
 ```bash
-npx @anthropic-ai/vision-context config show
+npx @anthropic-ai/seek-vision config show
 ```
 
 Should show `antigravity-cli: { available: true, authenticated: true }`
@@ -57,13 +57,13 @@ Should show `antigravity-cli: { available: true, authenticated: true }`
 
 ```bash
 # Use Gemini API
-npx @anthropic-ai/vision-context -i image.png -p gemini-api
+npx @anthropic-ai/seek-vision -i image.png -p gemini-api
 
 # Use Antigravity CLI
-npx @anthropic-ai/vision-context -i image.png -p antigravity-cli
+npx @anthropic-ai/seek-vision -i image.png -p antigravity-cli
 
 # Auto-detect (tries Gemini first, falls back to Antigravity)
-npx @anthropic-ai/vision-context -i image.png
+npx @anthropic-ai/seek-vision -i image.png
 ```
 
 ## Troubleshooting
