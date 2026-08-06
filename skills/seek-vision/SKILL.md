@@ -5,7 +5,7 @@ allowed-tools:
   - Bash
 ---
 
-# Vision Context — Vision Bridge Skill
+# Seek Vision — Vision Bridge Skill
 
 Use this skill when:
 
@@ -22,41 +22,41 @@ Do not use this skill for:
 ## Prerequisites
 
 ```bash
-npx @anthropic-ai/seek-vision --version
+npx @affrianr/seek-vision --version
 ```
 
-If `seek-vision` is missing, run it via `npx @anthropic-ai/seek-vision` instead.
+If `seek-vision` is missing, run it via `npx @affrianr/seek-vision` instead.
 
-Vision Context supports two vision providers. Check what is configured:
+Seek Vision supports two vision providers. Check what is configured:
 
 ```bash
-npx @anthropic-ai/seek-vision config show
+npx @affrianr/seek-vision config show
 ```
 
-- **gemini-api** (recommended, free): needs `GEMINI_API_KEY` env or `npx @anthropic-ai/seek-vision config set gemini-api.apiKey <key>` (free key from https://aistudio.google.com). Fast (5-10 seconds per image).
+- **gemini-api** (recommended, free): needs `GEMINI_API_KEY` env or `npx @affrianr/seek-vision config set gemini-api.apiKey <key>` (free key from https://aistudio.google.com). Fast (5-10 seconds per image).
 - **antigravity-cli** (no key needed): needs `agy` installed and signed in. If `agy --version` fails: `curl -fsSL https://antigravity.google/cli/install.sh | bash`, then ask the user to run `agy` once and complete the Google sign-in (cannot be done non-interactively). Slower (15-40 seconds) with tight free quota.
 
 ## Command
 
 ```bash
 # Basic usage
-npx @anthropic-ai/seek-vision -i <image-path-or-url>
+npx @affrianr/seek-vision extract <image-path-or-url>
 
 # Pick a provider explicitly
-npx @anthropic-ai/seek-vision -i <image> -p gemini-api
+npx @affrianr/seek-vision extract <image> -p gemini-api
 
 # With extra focus
-npx @anthropic-ai/seek-vision -i <image> --prompt "focus on axes"
+npx @affrianr/seek-vision extract <image> --prompt "focus on axes"
 
 # Output to file
-npx @anthropic-ai/seek-vision -i <image> -o output.json
+npx @affrianr/seek-vision extract <image> -o output.json
 ```
 
 Speed expectations: `gemini-api` typically 5-10 seconds, `antigravity-cli` 15-40 seconds. For dense or hard images on antigravity-cli, try `-m gemini-3.1-pro-high`.
 
 ## Workflow
 
-1. Run `seek-vision` once per image.
+1. Run `seek-vision extract` once per image.
 2. Parse the JSON from stdout. The structured payload is in the `result` field.
 3. Use `result.summary`, `result.ocr.full_text`, `result.layout.regions`, and `result.semantics` as evidence for your answer.
 4. If `result.uncertainty` is non-empty, tell the user what was ambiguous instead of guessing.
