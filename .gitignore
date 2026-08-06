@@ -11,6 +11,9 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
 
+# Build output
+dist/
+
 # Python
 __pycache__/
 *.pyc
@@ -29,8 +32,3 @@ env/
 # OS
 .DS_Store
 Thumbs.db
-
-# Build
-dist/
-build/
-*.egg-info/
